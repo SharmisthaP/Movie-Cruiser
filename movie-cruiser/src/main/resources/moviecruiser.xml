@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+https://www.springframework.org/schema/beans/spring-beans.xsd"> 
+
+
+	<bean id="movie1" class="com.cognizant.moviecruiser.model.Movie">
+		<property name="id" value="1"/>
+		<property name="title" value="Avatar"/>
+		<property name="genre" value="Science Fiction"/>
+		<property name="boxOffice" value="2.7"/>
+		<property name="active" value="true"/>
+		<property name="hasTeaser" value="true"/>
+		<property name="dateOfLaunch" value="15/03/2020"/>
+	</bean>
+	<bean id="movie2" class="com.cognizant.moviecruiser.model.Movie">
+		<property name="id" value="2"/>
+		<property name="title" value="Avengers"/>
+		<property name="genre" value="Superhero"/>
+		<property name="boxOffice" value="2.6"/>
+		<property name="active" value="true"/>
+		<property name="hasTeaser" value="false"/>
+		<property name="dateOfLaunch" value="22/12/2017"/>
+	</bean>
+	<bean id="movie3" class="com.cognizant.moviecruiser.model.Movie">
+		<property name="id" value="3"/>
+		<property name="title" value="Titanic"/>
+		<property name="genre" value="Romantic"/>
+		<property name="boxOffice" value="2.1"/>
+		<property name="active" value="true"/>
+		<property name="hasTeaser" value="false"/>
+		<property name="dateOfLaunch" value="21/08/2020"/>
+	</bean>
+	<bean id="movie4" class="com.cognizant.moviecruiser.model.Movie">
+		<property name="id" value="4"/>
+		<property name="title" value="Jurrasic World"/>
+		<property name="genre" value="Science Fiction"/>
+		<property name="boxOffice" value="1.6"/>
+		<property name="active" value="false"/>
+		<property name="hasTeaser" value="true"/>
+		<property name="dateOfLaunch" value="02/07/2017"/>
+	</bean>
+	<bean id="movie5" class="com.cognizant.moviecruiser.model.Movie">
+		<property name="id" value="5"/>
+		<property name="title" value="Avengers:Endgame"/>
+		<property name="genre" value="Superhero"/>
+		<property name="boxOffice" value="2.7"/>
+		<property name="active" value="true"/>
+		<property name="hasTeaser" value="true"/>
+		<property name="dateOfLaunch" value="02/11/2022"/>
+	</bean>
+	<bean id="movieList" class="java.util.ArrayList"> 
+		<constructor-arg> 
+			<list> 
+				<ref bean="movie1"></ref> 
+				<ref bean="movie2"></ref>
+				<ref bean="movie3"></ref> 
+				<ref bean="movie4"></ref> 
+				<ref bean="movie5"></ref>  
+			</list> 
+		</constructor-arg> 
+	</bean>
+</beans>
