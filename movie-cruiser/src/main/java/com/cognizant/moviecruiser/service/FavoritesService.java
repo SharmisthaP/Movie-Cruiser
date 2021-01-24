@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cognizant.moviecruiser.dao.FavoritesDao;
+import com.cognizant.moviecruiser.exception.FavoritesEmptyException;
 import com.cognizant.moviecruiser.exception.MovieNotFoundException;
 import com.cognizant.moviecruiser.model.Movie;
 import com.cognizant.moviecruiser.model.User;
@@ -52,8 +53,8 @@ public class FavoritesService {
 	
 	public Set<Movie> getFavorites(int userId){
 		
-		/*Set<Movie> list =null;
-		try{
+		Set<Movie> list =null;
+		/*try{
 			list= favoritesDao.getFavorites(user);
 		}
 		catch(FavoritesEmptyException e)
@@ -62,7 +63,10 @@ public class FavoritesService {
 		}
 		return list;*/
 		User user = userRepository.findById(userId).orElse(null);
-		return user.getMovieList();
+		list= user.getMovieList();
+		if(list.size()==0 || list==null)
+			throw new FavoritesEmptyException();
+		return list;
 	}
 	
 	public int getTotalFavorites(int userId)
