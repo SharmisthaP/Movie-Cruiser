@@ -23,7 +23,7 @@ public class AppUser implements UserDetails {
 		this.user=user;
 		this.authorities = user.getRoleList().stream().map(role -> new SimpleGrantedAuthority(role.getRole()))
 				.collect(Collectors.toList());
-		LOGGER.info(this.authorities+"");
+		//LOGGER.info(this.authorities+"");
 		
 	}
 	@Override

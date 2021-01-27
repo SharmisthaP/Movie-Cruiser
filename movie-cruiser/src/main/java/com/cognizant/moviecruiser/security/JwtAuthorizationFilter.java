@@ -42,7 +42,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 		return; 
 		} 
 		UsernamePasswordAuthenticationToken authentication = getAuthentication(req); 
-		LOGGER.info(authentication+"");
+		//LOGGER.info(authentication+"");
 		SecurityContextHolder.getContext().setAuthentication(authentication); 
 		chain.doFilter(req, res); 
 		LOGGER.info("End"); 
