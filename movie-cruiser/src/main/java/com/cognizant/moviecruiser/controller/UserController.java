@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.cognizant.moviecruiser.PasswordConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,6 +30,9 @@ public class UserController {
 	
 	@Autowired
 	RoleService roleService;
+
+	@Autowired
+	PasswordConfig passwordConfig;  // Inject the bean
 	
 	@PostMapping(value="/signup")
 	public String signup(@RequestBody @Valid MovieUser user){
@@ -39,7 +43,7 @@ public class UserController {
 		
 		User newUser = new User();
 		newUser.setUsername(user.getUserName());
-		newUser.setPassword(passwordEncoder().encode(user.getPassword()));
+		newUser.setPassword(passwordConfig.passwordEncoder().encode(user.getPassword()));
 		newUser.setRoleList(roleList);
 		
 		String res="";
@@ -66,12 +70,6 @@ public class UserController {
 			
 		
 	}
-	
-	
-	public PasswordEncoder passwordEncoder() { 
-		
-		return new BCryptPasswordEncoder(); 
-	} 
 
 	
 }
